@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// turn the input char array in a int -> for 2. condition in main.c
-
 long	ft_atol(char *str)
 {
 	int		i;
@@ -36,7 +34,6 @@ long	ft_atol(char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = (result * 10) + (str[i] - '0');
-		i++;
 	}
 	return (result * base);
 }
