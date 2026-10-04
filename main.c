@@ -6,7 +6,7 @@
 /*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/10/04 12:02:29 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/10/04 12:07:49 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ int	main(int argc, char **argv)
 
 	while (i < argc)
 	{
+
+		if (!(ft_syntax_check(argv)))
+		{
+			write(2, "Error\n", 6);
+			return (1);
+		}
+
 		value = ft_atol(argv[i]);
 
 		if (value > 2147483647 || value < -2147483648)
