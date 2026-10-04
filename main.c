@@ -5,25 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/03 11:22:09 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/10/03 12:55:03 by pspuhler         ###   ########.fr       */
+/*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
+/*   Updated: 2026/10/04 12:07:49 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	main(int argc, char **argv)
 {
 
-	NACH NUMMERN PRÜFEN SPRICH NUMM
-
-
-
+	int	i;
 	long value;
 
-	value = ft_atol(argc[1]);
+	// 1. S. 20 in PDF: If no argument is given, it stops and displays nothing.
 
-	if (value > 2147483647 || value < -2147483648)
+	if (argc == 1)
 	{
-		stderr -> write Error\n in stdout
+		return (0);
 	}
 
+	// 2. Check if int is valid
+
+	i = 1;
+
+	while (i < argc)
+	{
+
+		if (!(ft_syntax_check(argv)))
+		{
+			write(2, "Error\n", 6);
+			return (1);
+		}
+
+		value = ft_atol(argv[i]);
+
+		if (value > 2147483647 || value < -2147483648)
+		{
+			write(2, "Error\n", 6);
+			return (1);
+		}
+
+		i++;
+	}
+
+
+
+	return (0);
 }
