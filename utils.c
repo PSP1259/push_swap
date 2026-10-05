@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// turn the input char array in a int
 long	ft_atol(char *str)
 {
 	int		i;
