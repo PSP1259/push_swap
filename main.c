@@ -6,7 +6,7 @@
 /*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/09 13:12:31 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:22:13 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ void	print_stack_rev(char *label, t_node *head)
 	printf("\n");
 }
 
+/*
+ * Checks if arguments exist, initializes the main data structure,
+ * validates and parses CLI arguments into stack_a, and frees all memory.
+ */
 int	main(int argc, char **argv)
 {
 	t_data	data;

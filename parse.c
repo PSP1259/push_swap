@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 16:14:22 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 13:47:17 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:28:27 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//str must not be null becasue there is no protection against that
-
+/*
+ * Turns a string to a integer.
+ * Checks if the input is a digit.
+ */
 int	ft_atoi_safe(const char *str, int *out)
 {
 	long	result;
@@ -42,6 +44,10 @@ int	ft_atoi_safe(const char *str, int *out)
 	return (1);
 }
 
+/*
+ * Compares every node in stack_a with all subsequent nodes to detect
+ * duplicate numbers. Returns 1 if a duplicate is found, or 0 if all are unique.
+ */
 int	duplicate_checker(t_node *head)
 {
 	t_node	*outer;
@@ -64,6 +70,12 @@ int	duplicate_checker(t_node *head)
 	return (0);
 }
 
+/*
+ * Loops through all command-line arguments starting at index 1.
+ * Converts each string to an integer via ft_atoi_safe, creates a new node,
+ * appends it to stack_a, and checks for duplicates at the end.
+ * Returns 1 if all inputs are valid, or 0 on any error.
+ */
 int	parse_args(int argc, char **argv, t_data *data)
 {
 	int		i;
