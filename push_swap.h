@@ -6,7 +6,7 @@
 /*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 16:02:12 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:10:25 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,6 @@ int		record(t_data *data, t_op op);
 void	print_ops(t_data *data);
 void	free_all(t_data *data);
 int		parse_args(int argc, char **argv, t_data *data);
+int		is_sorted(t_node *stack);
+int		assign_ranks(t_data *data);
 #endif

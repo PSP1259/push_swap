@@ -6,7 +6,7 @@
 /*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/09 15:43:06 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:50:05 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,11 @@ int	main(int argc, char **argv)
 		free_all(&data);
 		ft_putstr_fd("Error\n", 2);
 		return (1);
+	}
+	if (is_sorted(data.stack_a))
+	{
+		free_all(&data);
+		return (0);
 	}
 	print_stack("a", data.stack_a);
 	print_stack("b", data.stack_b);

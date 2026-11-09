@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+         #
+#    By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/01 16:28:57 by juan-jos          #+#    #+#              #
-#    Updated: 2026/10/26 16:36:01 by vboxuser         ###   ########.fr        #
+#    Updated: 2026/11/09 17:30:06 by juan-jos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS =	list_make.c \
 		ops_rotate.c \
 		ops_rev_rotate.c \
 		record.c \
-		parse.c
+		parse.c \
+		push_swap_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
