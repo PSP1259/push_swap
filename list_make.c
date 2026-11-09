@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   list_make.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:19:31 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/10/21 18:17:28 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:31:29 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+ * Allocates and initializes a new stack node with the given integer value.
+ * Sets next and prev pointers to NULL and returns the node (or NULL on error).
+ */
 t_node	*ft_create_node(int value)
 {
 	t_node	*node;
@@ -25,6 +29,11 @@ t_node	*ft_create_node(int value)
 	return (node);
 }
 
+/*
+ * Appends a new node to the end of the circular doubly linked list.
+ * If the stack is empty (*lst == NULL), the single node points to itself.
+ * Otherwise, links the new node between the current last node and the first node.
+ */
 void	ft_add_node_back(t_node **lst, t_node *new)
 {
 	t_node	*node;
@@ -45,6 +54,10 @@ void	ft_add_node_back(t_node **lst, t_node *new)
 	(*lst)->prev = new;
 }
 
+/*
+ * TEST ONLY: Prints all values in the circular list from top to bottom.
+ * (Must be removed or replaced before final submission due to printf).
+ */
 void	print_list(t_node *head)
 {
 	t_node	*current;
@@ -62,6 +75,10 @@ void	print_list(t_node *head)
 	}
 }
 
+/*
+ * Frees all allocated nodes in a stack and resets the stack pointer to NULL.
+ * Breaks the circular loop first so the while-loop terminates cleanly.
+ */
 void	free_list(t_node **head)
 {
 	t_node	*temp;

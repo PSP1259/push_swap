@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   record.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 13:24:24 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/10/25 11:43:05 by vboxuser         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:36:39 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+ * Initializes the main t_data structure before parsing begins.
+ * Sets stack_a and stack_b to empty (NULL) and allocates memory for
+ * recording up to 1024 operations initially. Returns 1 on success, 0 on error.
+ */
 int	init_data(t_data *data)
 {
 	if (!data)
@@ -26,6 +31,11 @@ int	init_data(t_data *data)
 	return (1);
 }
 
+/*
+ * Saves an executed operation into the dynamic ops array.
+ * If the array is full (n_ops == capacity), it doubles the allocated memory
+ * so no operations are ever lost. Returns 1 on success, 0 on malloc error.
+ */
 int	record(t_data *data, t_op op)
 {
 	t_op	*new_ops;
@@ -45,12 +55,16 @@ int	record(t_data *data, t_op op)
 	return (1);
 }
 
+/*
+ * Prints all recorded operations as text ("sa", "pb", etc.) to standard output,
+ * separated by newlines, matching the exact order they were executed.
+ */
 void	print_ops(t_data *data)
 {
 	static char *table[] = {"sa","sb","ss","pa","pb","ra","rb",
 							"rr","rra","rrb","rrr"};
 	int i;
-	
+
 	if (!data)
 		return ;
 	i = 0;
@@ -61,6 +75,10 @@ void	print_ops(t_data *data)
 	}
 }
 
+/*
+ * Cleans up all dynamically allocated memory (stack_a, stack_b, and ops array)
+ * before the program exits to prevent memory leaks.
+ */
 void	free_all(t_data *data)
 {
 	if (!data)
