@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 16:14:22 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/10/26 17:57:00 by vboxuser         ###   ########.fr       */
+/*   Updated: 2026/11/09 13:47:17 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	parse_args(int argc, char **argv, t_data *data)
 	t_node	*node;
 
 	if (!data)
-	    return (0);
+		return (0);
 	i = 1;
 	while (i < argc)
 	{
