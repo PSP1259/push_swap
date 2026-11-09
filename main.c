@@ -3,15 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2026/10/21 18:17:19 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/10/26 18:03:13 by vboxuser         ###   ########.fr       */
-=======
 /*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/10/04 12:07:49 by pspuhler         ###   ########.fr       */
->>>>>>> origin/main
+/*   Updated: 2026/11/09 12:44:23 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
