@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 18:17:01 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 15:33:26 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:28:18 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	swap(t_node **stack)
 
 /*
  * Moves the top node from src_stack to the top of dest_stack.
- * Detaches the top node from src_stack and places it as the new head of dest_stack.
+ * Detaches the top node from src_stack and places it as the new 
+ * head of dest_stack.
  * Returns 1 if pushed, or 0 if src_stack is empty.
  */
 int	push(t_node **src_stack, t_node **dest_stack)

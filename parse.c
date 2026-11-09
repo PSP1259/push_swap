@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 16:14:22 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 15:28:27 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:54:15 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	parse_args(int argc, char **argv, t_data *data)
 		node = ft_create_node(num);
 		if (!node)
 			return (0);
+		data->size_a++;
 		ft_add_node_back(&data->stack_a, node);
 		i++;
 	}

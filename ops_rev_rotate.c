@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ops_rev_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 10:07:33 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 15:35:55 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:27:50 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	rrb(t_data *data)
 		record(data, OP_RRB);
 }
 
-// Executes 'rrr' (reverse rotate both stacks down simultaneously) and records it.
+// Executes 'rrr' (reverse rotate both stacks down simultaneously)
 void	rrr(t_data *data)
 {
 	int	a_move;

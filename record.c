@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   record.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 13:24:24 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 15:36:39 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:50:07 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	init_data(t_data *data)
 		return (0);
 	data->stack_a = NULL;
 	data->stack_b = NULL;
+	data->size_a = 0;
+	data->size_b = 0;
 	data->capacity = 1024;
 	data->n_ops = 0;
 	data->ops = malloc(sizeof(t_op) * data->capacity);
