@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/10/26 17:55:04 by vboxuser         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:08:16 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_node;
 
+/*
+ * Enumeration of all 11 valid push_swap operations.
+ * Used to record moves compactly as integers before printing.
+ */
 typedef enum e_op
 {
 	OP_SA,
@@ -38,6 +42,11 @@ typedef enum e_op
 	OP_RRR
 }	t_op;
 
+/*
+ * Master data structure holding both stacks (a and b) and the dynamic
+ * array of recorded operations (ops) with its current count and capacity.
+ * Global variables are forbidden.
+ */
 typedef struct s_data
 {
 	t_node	*stack_a;
@@ -47,7 +56,7 @@ typedef struct s_data
 	int		capacity;
 }	t_data;
 
-/*Function Prototypes*/
+// Function Prototypes
 t_node	*ft_create_node(int value);
 void	ft_add_node_back(t_node **lst, t_node *new);
 void	print_list(t_node *head);

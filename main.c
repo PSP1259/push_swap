@@ -58,6 +58,10 @@ void	print_stack_rev(char *label, t_node *head)
 	printf("\n");
 }
 
+/*
+ * Checks if arguments exist, initializes the main data structure,
+ * validates and parses CLI arguments into stack_a, and frees all memory.
+ */
 int	main(int argc, char **argv)
 {
 	t_data	data;

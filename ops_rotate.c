@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ops_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 10:07:20 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/10/25 13:08:12 by vboxuser         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:35:24 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Executes 'ra' (rotate stack a up by one) and records the move.
 void	ra(t_data *data)
 {
 	if (!data)
@@ -20,6 +21,7 @@ void	ra(t_data *data)
 		record(data, OP_RA);
 }
 
+// Executes 'rb' (rotate stack b up by one) and records the move.
 void	rb(t_data *data)
 {
 	if (!data)
@@ -28,6 +30,7 @@ void	rb(t_data *data)
 		record(data, OP_RB);
 }
 
+// Executes 'rr' (rotate both stack a and stack b up simultaneously) and records it.
 void	rr(t_data *data)
 {
 	int	a_move;

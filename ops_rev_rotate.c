@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ops_rev_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 10:07:33 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/10/25 13:17:56 by vboxuser         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:35:55 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Executes 'rra' (reverse rotate stack a down by one) and records the move.
 void	rra(t_data *data)
 {
 	if (!data)
@@ -20,6 +21,7 @@ void	rra(t_data *data)
 		record(data, OP_RRA);
 }
 
+// Executes 'rrb' (reverse rotate stack b down by one) and records the move.
 void	rrb(t_data *data)
 {
 	if (!data)
@@ -28,6 +30,7 @@ void	rrb(t_data *data)
 		record(data, OP_RRB);
 }
 
+// Executes 'rrr' (reverse rotate both stacks down simultaneously) and records it.
 void	rrr(t_data *data)
 {
 	int	a_move;

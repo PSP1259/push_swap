@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ops_swap_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 09:51:09 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/10/25 13:05:44 by vboxuser         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:34:47 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Executes 'sa' (swap top two elements of stack a) and records the move.
 void	sa(t_data *data)
 {
 	if (!data)
@@ -20,6 +21,7 @@ void	sa(t_data *data)
 		record(data, OP_SA);
 }
 
+// Executes 'sb' (swap top two elements of stack b) and records the move.
 void	sb(t_data *data)
 {
 	if (!data)
@@ -28,6 +30,7 @@ void	sb(t_data *data)
 		record(data, OP_SB);
 }
 
+// Executes 'ss' (swap both stack a and stack b simultaneously) and records it.
 void	ss(t_data *data)
 {
 	int	a_move;
@@ -45,6 +48,7 @@ void	ss(t_data *data)
 		record(data, OP_SB);
 }
 
+// Executes 'pa' (push top of stack b to top of stack a) and records the move.
 void	pa(t_data *data)
 {
 	if (!data)
@@ -53,6 +57,7 @@ void	pa(t_data *data)
 		record(data, OP_PA);
 }
 
+// Executes 'pb' (push top of stack a to top of stack b) and records the move.
 void	pb(t_data *data)
 {
 	if (!data)
