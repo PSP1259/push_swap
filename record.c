@@ -25,7 +25,7 @@ int	init_data(t_data *data)
 	data->stack_b = NULL;
 	data->capacity = 1024;
 	data->n_ops = 0;
-	data->ops = malloc(sizeof(t_op)*data->capacity);
+	data->ops = malloc(sizeof(t_op) * data->capacity);
 	if (!data->ops)
 		return (0);
 	return (1);
@@ -50,8 +50,8 @@ int	record(t_data *data, t_op op)
 		data->ops = new_ops;
 		data->capacity = data->capacity * 2;
 	}
-    data->ops[data->n_ops] = op;
-    data->n_ops++;
+	data->ops[data->n_ops] = op;
+	data->n_ops++;
 	return (1);
 }
 
@@ -61,9 +61,9 @@ int	record(t_data *data, t_op op)
  */
 void	print_ops(t_data *data)
 {
-	static char *table[] = {"sa","sb","ss","pa","pb","ra","rb",
-							"rr","rra","rrb","rrr"};
-	int i;
+	static char	*table[] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
+		"rra", "rrb", "rrr"};
+	int			i;
 
 	if (!data)
 		return ;

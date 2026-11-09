@@ -83,7 +83,7 @@ int	parse_args(int argc, char **argv, t_data *data)
 	t_node	*node;
 
 	if (!data)
-	    return (0);
+		return (0);
 	i = 1;
 	while (i < argc)
 	{
