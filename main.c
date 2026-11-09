@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/09 12:44:23 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:43:06 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-<<<<<<< HEAD
 	if (argc < 2)
 		return (0);
 	if (!init_data(&data))
@@ -79,43 +78,5 @@ int	main(int argc, char **argv)
 	print_stack("a", data.stack_a);
 	print_stack("b", data.stack_b);
 	free_all(&data);
-=======
-	int	i;
-	long value;
-
-	// 1. S. 20 in PDF: If no argument is given, it stops and displays nothing.
-
-	if (argc == 1)
-	{
-		return (0);
-	}
-
-	// 2. Check if int is valid
-
-	i = 1;
-
-	while (i < argc)
-	{
-
-		if (!(ft_syntax_check(argv)))
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
-
-		value = ft_atol(argv[i]);
-
-		if (value > 2147483647 || value < -2147483648)
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
-
-		i++;
-	}
-
-
-
->>>>>>> origin/main
 	return (0);
 }
