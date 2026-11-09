@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 12:25:50 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/10/03 11:43:50 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/10/20 18:46:29 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdard.h>
+//# include <stdard.h>
 
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
@@ -73,15 +73,5 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
-
-int				ft_printf(const char *format, ...);
-int				ft_print_char(va_list args);
-int				ft_print_str(va_list args);
-int				ft_print_ptr(va_list args);
-int				ft_print_putnbr(va_list args);
-int				ft_print_unsigned(va_list args);
-int				ft_print_hex_lower(va_list args);
-int				ft_print_hex_upper(va_list args);
-int				ft_print_percent(void);
 
 #endif
