@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ops_swap_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 09:51:09 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 15:34:47 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:13:18 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,34 @@ void	ss(t_data *data)
 		record(data, OP_SB);
 }
 
-// Executes 'pa' (push top of stack b to top of stack a) and records the move.
+/*  
+*	Executes 'pa' (push top of stack b to top of stack a) and records the move.
+*	Also modifies the size so it saves the current size of the stack
+*/
 void	pa(t_data *data)
 {
 	if (!data)
 		return ;
 	if (push(&data->stack_b, &data->stack_a) == 1)
+	{
+		data->size_a++;
+		data->size_b--;
 		record(data, OP_PA);
+	}
 }
 
-// Executes 'pb' (push top of stack a to top of stack b) and records the move.
+/* 
+*	Executes 'pb' (push top of stack a to top of stack b) and records the move.
+*	Also modifies the size so it saves the current size of the stack
+*/
 void	pb(t_data *data)
 {
 	if (!data)
 		return ;
 	if (push(&data->stack_a, &data->stack_b) == 1)
+	{
+		data->size_a--;
+		data->size_b++;
 		record(data, OP_PB);
+	}
 }

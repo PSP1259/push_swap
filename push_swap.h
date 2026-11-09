@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 15:08:16 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:02:12 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,15 @@ typedef enum e_op
 /*
  * Master data structure holding both stacks (a and b) and the dynamic
  * array of recorded operations (ops) with its current count and capacity.
+ * in
  * Global variables are forbidden.
  */
 typedef struct s_data
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
+	int		size_a;
+	int		size_b;
 	t_op	*ops;
 	int		n_ops;
 	int		capacity;
