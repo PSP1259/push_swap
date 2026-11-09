@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+         #
+#    By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/25 12:22:09 by pspuhler          #+#    #+#              #
-#    Updated: 2026/10/03 11:46:35 by pspuhler         ###   ########.fr        #
+#    Updated: 2026/10/20 18:47:07 by juan-jos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,15 +67,6 @@ SRC = ft_isalpha \
   ft_lstclear \
   ft_lstiter \
   ft_lstmap \
-  ft_printf.c \
-  ft_print_char.c \
-  ft_print_hex_lower.c \
-  ft_print_hex_upper.c \
-  ft_print_percent.c \
-  ft_print_ptr.c \
-  ft_print_putnbr.c \
-  ft_print_str.c \
-  ft_print_unsigned.c
 
 # Automatically build paths for sources (src/ft_isalpha.c) and keep object files in the root
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC)))
