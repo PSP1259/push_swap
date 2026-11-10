@@ -6,7 +6,7 @@
 /*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/10 11:21:26 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:27:22 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
-
-void	index_stack(t_node *head);
 
 /*
  * Enumeration of all 11 valid push_swap operations.
@@ -93,4 +91,7 @@ void	free_all(t_data *data);
 int		parse_args(int argc, char **argv, t_data *data);
 int		is_sorted(t_node *stack);
 int		assign_ranks(t_data *data);
+void	sort_radix(t_data *data);
+void	sort_medium(t_data *data);
+void	sort_simple(t_data *data);
 #endif

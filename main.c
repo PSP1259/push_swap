@@ -6,7 +6,7 @@
 /*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/10 10:52:21 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:25:43 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,10 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-	index_stack(data.stack_a);
-	if (!is_sorted(data.stack_a))
+	assign_ranks(data->stack_a);
+	if (!is_sorted(data->stack_a))
 	{
-		disorder = compute_disorder(data.stack_a, data.size_a);
+		disorder = compute_disorder(data->stack_a, data->size_a);
 		execute_strategy(&data, mode, disorder);
 	}
 	free_all(&data);
