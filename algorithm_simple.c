@@ -6,7 +6,7 @@
 /*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 16:45:46 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/09 17:37:55 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:02:57 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	get_min_pos(t_node *head)
 	int		min_pos;
 	int		pos;
 
+	if (!head)
+		return (0);
 	current = head;
 	min_val = head->value;
 	min_pos = 0;
@@ -75,7 +77,7 @@ void	move_min_to_top(t_data *data)
  */
 void	sort_simple(t_data *data)
 {
-	if (!data || data->size_a < 2);
+	if (!data || data->size_a < 2)
 		return ;
 	while (data->size_a > 1)
 	{
