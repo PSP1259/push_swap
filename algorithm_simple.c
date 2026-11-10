@@ -6,9 +6,11 @@
 /*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 16:45:46 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/10 10:02:57 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:14:51 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 /*
  * Searches stack_a for the node with the smallest integer value and returns
