@@ -6,7 +6,7 @@
 /*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/10 10:29:52 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:52:21 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,45 +82,54 @@ int	parse_mode(int argc, char **argv, int *start_idx)
 }
 
 /*
-** Directs the program to the correct algorithm based on mode and disorder.
+** Directs the program to the correct algorithm based on the chosen mode.
+** In ADAPTIVE mode, it routes based on the computed disorder metric.
 */
 void	execute_strategy(t_data *data, int mode, float disorder)
 {
 	if (mode == MODE_SIMPLE)
 		sort_simple(data);
-	// else if (mode == MODE_MEDIUM)
-	// 	sort_medium(data);
-	// else if (mode == MODE_COMPLEX)
-	// 	sort_complex(data);
-	// else if (mode == MODE_ADAPTIVE)
-	// 	sort_adaptive(data, disorder);
+	else if (mode == MODE_MEDIUM)
+		sort_medium(data);
+	else if (mode == MODE_COMPLEX)
+		sort_complex(data);
+	else if (mode == MODE_ADAPTIVE)
+	{
+		if (disorder < 0.2f)
+			sort_simple(data);
+		else if (disorder < 0.5f)
+			sort_medium(data);
+		else
+			sort_complex(data);
+	}
 }
 
 /*
 ** Main entry point. Initializes data structures, parses CLI arguments
 ** including strategy flags, and routes to the correct sorting algorithm.
 */
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_data  data;
-    int     mode;
-    int     start_idx;
-    float   disorder;
+	t_data	data;
+	int		mode;
+	int		start_idx;
+	float	disorder;
 
-    if (argc < 2)
-        return (0);
-    mode = parse_mode(argc, argv, &start_idx);
-    if (!init_data(&data) || !parse_args(argc, argv, start_idx, &data))
-    {
-        free_all(&data);
-        ft_putstr_fd("Error\n", 2);
-        return (1);
-    }
-    if (!is_sorted(data.stack_a))
-    {
-        disorder = compute_disorder(data.stack_a, data.size_a);
-        execute_strategy(&data, mode, disorder);
-    }
-    free_all(&data);
-    return (0);
+	if (argc < 2)
+		return (0);
+	mode = parse_mode(argc, argv, &start_idx);
+	if (!init_data(&data) || !parse_args(argc, argv, start_idx, &data))
+	{
+		free_all(&data);
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
+	index_stack(data.stack_a);
+	if (!is_sorted(data.stack_a))
+	{
+		disorder = compute_disorder(data.stack_a, data.size_a);
+		execute_strategy(&data, mode, disorder);
+	}
+	free_all(&data);
+	return (0);
 }
