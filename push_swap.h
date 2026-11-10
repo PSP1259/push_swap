@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 18:10:25 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:48:30 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
+
+void	index_stack(t_node *head);
 
 /*
  * Enumeration of all 11 valid push_swap operations.
