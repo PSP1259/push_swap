@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/10 11:25:43 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:37:44 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,18 +118,20 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	mode = parse_mode(argc, argv, &start_idx);
-	if (!init_data(&data) || !parse_args(argc, argv, start_idx, &data))
+	if (!init_data(&data) || !parse_args(argc, argv, &data))
 	{
 		free_all(&data);
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-	assign_ranks(data->stack_a);
-	if (!is_sorted(data->stack_a))
+	assign_ranks(data.stack_a);
+	if (!is_sorted(data.stack_a))
 	{
-		disorder = compute_disorder(data->stack_a, data->size_a);
+		disorder = compute_disorder(data.stack_a, data.size_a);
+		printf("%f", disorder);
 		execute_strategy(&data, mode, disorder);
 	}
+	
 	free_all(&data);
 	return (0);
 }

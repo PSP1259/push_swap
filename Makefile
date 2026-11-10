@@ -6,7 +6,7 @@
 #    By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/01 16:28:57 by juan-jos          #+#    #+#              #
-#    Updated: 2026/11/09 17:30:06 by juan-jos         ###   ########.fr        #
+#    Updated: 2026/11/10 11:36:18 by juan-jos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,11 @@ SRCS =	list_make.c \
 		ops_rev_rotate.c \
 		record.c \
 		parse.c \
-		push_swap_utils.c
+		push_swap_utils.c \
+		algorithm_simple.c \
+		algorithm_medium.c \
+		algorithm_complex.c \
+		compute_disorser.c \
 
 OBJS = $(SRCS:.c=.o)
 
