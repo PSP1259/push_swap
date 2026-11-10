@@ -6,7 +6,7 @@
 /*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 16:14:22 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/10 11:20:34 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/10 12:00:44 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	duplicate_checker(t_node *head)
  * appends it to stack_a, and checks for duplicates at the end.
  * Returns 1 if all inputs are valid, or 0 on any error.
  */
-int	parse_args(int argc, char **argv, t_data *data)
+int	parse_args(int argc, char **argv, int start, t_data *data)
 {
 	int		i;
 	int		num;
@@ -84,7 +84,7 @@ int	parse_args(int argc, char **argv, t_data *data)
 
 	if (!data)
 		return (0);
-	i = 1;
+	i = start;
 	while (i < argc)
 	{
 		if (ft_atoi_safe(argv[i], &num) == 0)

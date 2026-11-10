@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/10 11:27:22 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/10 12:01:03 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft.h"
-# include <stdio.h>
 # include <limits.h>
+# include <stdio.h>
 # define MODE_ADAPTIVE 0
 # define MODE_SIMPLE 1
 # define MODE_MEDIUM 2
@@ -26,7 +26,7 @@ typedef struct s_node
 	int				index;
 	struct s_node	*next;
 	struct s_node	*prev;
-}	t_node;
+}					t_node;
 
 /*
  * Enumeration of all 11 valid push_swap operations.
@@ -45,7 +45,7 @@ typedef enum e_op
 	OP_RRA,
 	OP_RRB,
 	OP_RRR
-}	t_op;
+}					t_op;
 
 /*
  * Master data structure holding both stacks (a and b) and the dynamic
@@ -55,43 +55,47 @@ typedef enum e_op
  */
 typedef struct s_data
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
-	int		size_a;
-	int		size_b;
-	t_op	*ops;
-	int		n_ops;
-	int		capacity;
-}	t_data;
+	t_node			*stack_a;
+	t_node			*stack_b;
+	int				size_a;
+	int				size_b;
+	t_op			*ops;
+	int				n_ops;
+	int				capacity;
+}					t_data;
 
 // Function Prototypes
-t_node	*ft_create_node(int value);
-void	ft_add_node_back(t_node **lst, t_node *new);
-void	print_list(t_node *head);
-void	free_list(t_node **head);
-int		rotate(t_node **stack);
-int		rev_rotate(t_node **stack);
-int		swap(t_node **stack);
-int		push(t_node **src_stack, t_node **dest_stack);
-void	sa(t_data *data);
-void	sb(t_data *data);
-void	ss(t_data *data);
-void	pa(t_data *data);
-void	pb(t_data *data);
-void	ra(t_data *data);
-void	rb(t_data *data);
-void	rr(t_data *data);
-void	rra(t_data *data);
-void	rrb(t_data *data);
-void	rrr(t_data *data);
-int		init_data(t_data *data);
-int		record(t_data *data, t_op op);
-void	print_ops(t_data *data);
-void	free_all(t_data *data);
-int		parse_args(int argc, char **argv, t_data *data);
-int		is_sorted(t_node *stack);
-int		assign_ranks(t_data *data);
-void	sort_radix(t_data *data);
-void	sort_medium(t_data *data);
-void	sort_simple(t_data *data);
+t_node				*ft_create_node(int value);
+void				ft_add_node_back(t_node **lst, t_node *new);
+void				print_list(t_node *head);
+void				free_list(t_node **head);
+int					rotate(t_node **stack);
+int					rev_rotate(t_node **stack);
+int					swap(t_node **stack);
+int					push(t_node **src_stack, t_node **dest_stack);
+void				sa(t_data *data);
+void				sb(t_data *data);
+void				ss(t_data *data);
+void				pa(t_data *data);
+void				pb(t_data *data);
+void				ra(t_data *data);
+void				rb(t_data *data);
+void				rr(t_data *data);
+void				rra(t_data *data);
+void				rrb(t_data *data);
+void				rrr(t_data *data);
+int					init_data(t_data *data);
+int					record(t_data *data, t_op op);
+void				print_ops(t_data *data);
+void				free_all(t_data *data);
+int					parse_args(int argc, char **argv, int start, t_data *data);
+int					is_sorted(t_node *stack);
+int					assign_ranks(t_data *data);
+void				sort_complex(t_data *data);
+void				sort_medium(t_data *data);
+void				sort_simple(t_data *data);
+float				compute_disorder(t_node *head, int size);
+int					get_node_pos(t_node *stack, int value);
+int					get_max_val(t_node *stack);
+
 #endif
