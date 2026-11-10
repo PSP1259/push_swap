@@ -6,7 +6,7 @@
 /*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/10 10:48:30 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:21:26 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include "libft.h"
 # include <stdio.h>
 # include <limits.h>
+# define MODE_ADAPTIVE 0
+# define MODE_SIMPLE 1
+# define MODE_MEDIUM 2
+# define MODE_COMPLEX 3
 
 typedef struct s_node
 {
