@@ -6,7 +6,7 @@
 /*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 10:45:01 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/10 11:08:15 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:42:39 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_max_bits(int n)
 	return (bits);
 }
 
-void	sort_radix(t_data *data)
+void	sort_complex(t_data *data)
 {
 	int n;
 	int max_bits;

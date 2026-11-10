@@ -6,7 +6,7 @@
 /*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 16:15:17 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 16:41:21 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:52:53 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,53 @@ int	is_sorted(t_node *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+/*
+*	Returns the biggest value in the stack.
+*	Walks the whole circle once, starting at the head.
+*	Returns 0 for an empty stack (callers should check the size first).
+*/
+int	get_max_val(t_node *stack)
+{
+	t_node	*current;
+	int		max;
+
+	if (!stack)
+		return (0);
+	max = stack->value;
+	current = stack->next;
+	while (current != stack)
+	{
+		if (current->value > max)
+			max = current->value;
+		current = current->next;
+	}
+	return (max);
+}
+
+/*
+*	Returns the position of 'value' in the stack, counting from the
+*	top (head = 0). Returns -1 if the stack is empty or the value
+*	isn't in it.
+*/
+int	get_node_pos(t_node *stack, int value)
+{
+	t_node	*current;
+	int		pos;
+
+	if (!stack)
+		return (-1);
+	current = stack;
+	pos = 0;
+	while (1)
+	{
+		if (current->value == value)
+			return (pos);
+		current = current->next;
+		pos++;
+		if (current == stack)
+			break ;
+	}
+	return (-1);
 }
