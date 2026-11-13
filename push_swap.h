@@ -6,7 +6,7 @@
 /*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/13 11:56:26 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/13 13:14:02 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct s_data
 	int				capacity;
 	int				mode;
 	int				bench;
+	const char		*strategy;
+	const char		*complexity;
+
 }					t_data;
 
 // Function Prototypes
