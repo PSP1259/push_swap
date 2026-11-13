@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 16:15:17 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/10 11:52:53 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/13 16:49:24 by vboxuser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_sorted(t_node *stack)
 {
-	t_node *head;
+	t_node	*head;
 
 	head = stack;
 	if (stack == NULL || stack->next == stack)

@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   record.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 13:24:24 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/13 11:47:49 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/13 16:50:53 by vboxuser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
- * Initializes the main t_data structure before parsing begins.
- * Sets stack_a and stack_b to empty (NULL) and allocates memory for
- * recording up to 1024 operations initially. Returns 1 on success, 0 on error.
- */
+* Initializes the main t_data structure before parsing begins.
+* Sets stack_a and stack_b to empty (NULL) and allocates memory for
+* recording up to 1024 operations initially. Returns 1 on success, 0 on error.
+*/
+
 int	init_data(t_data *data)
 {
 	if (!data)
@@ -28,6 +29,9 @@ int	init_data(t_data *data)
 	data->capacity = 1024;
 	data->n_ops = 0;
 	data->bench = 0;
+	data->mode = MODE_ADAPTIVE;
+	data->strategy = "None (already sorted)";
+	data->complexity = "O(1)";
 	data->ops = malloc(sizeof(t_op) * data->capacity);
 	if (!data->ops)
 		return (0);
@@ -35,10 +39,11 @@ int	init_data(t_data *data)
 }
 
 /*
- * Saves an executed operation into the dynamic ops array.
- * If the array is full (n_ops == capacity), it doubles the allocated memory
- * so no operations are ever lost. Returns 1 on success, 0 on malloc error.
- */
+* Saves an executed operation into the dynamic ops array.
+* If the array is full (n_ops == capacity), it doubles the allocated memory
+* so no operations are ever lost. Returns 1 on success, 0 on malloc error.
+*/
+
 int	record(t_data *data, t_op op)
 {
 	t_op	*new_ops;
@@ -59,13 +64,14 @@ int	record(t_data *data, t_op op)
 }
 
 /*
- * Prints all recorded operations as text ("sa", "pb", etc.) to standard output,
- * separated by newlines, matching the exact order they were executed.
- */
+* Prints all recorded operations as text ("sa", "pb", etc.) to standard output,
+* separated by newlines, matching the exact order they were executed.
+*/
+
 void	print_ops(t_data *data)
 {
-	static char	*table[] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
-		"rra", "rrb", "rrr"};
+	static char	*table[] = {"sa", "sb", "ss", "pa", "pb", "ra",
+		"rb", "rr", "rra", "rrb", "rrr"};
 	int			i;
 
 	if (!data)
@@ -79,9 +85,10 @@ void	print_ops(t_data *data)
 }
 
 /*
- * Cleans up all dynamically allocated memory (stack_a, stack_b, and ops array)
- * before the program exits to prevent memory leaks.
- */
+* Cleans up all dynamically allocated memory (stack_a, stack_b, and ops array)
+* before the program exits to prevent memory leaks.
+*/
+
 void	free_all(t_data *data)
 {
 	if (!data)
