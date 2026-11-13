@@ -6,7 +6,7 @@
 #    By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/01 16:28:57 by juan-jos          #+#    #+#              #
-#    Updated: 2026/11/10 11:55:00 by juan-jos         ###   ########.fr        #
+#    Updated: 2026/11/13 11:31:01 by juan-jos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS =	list_make.c \
 		algorithm_medium.c \
 		algorithm_complex.c \
 		compute_disorder.c \
+		rank.c
 
 OBJS = $(SRCS:.c=.o)
 
