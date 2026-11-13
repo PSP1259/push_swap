@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_make.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:19:31 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 16:28:44 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/13 11:28:43 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_node	*ft_create_node(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
+	node->index = 0;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);
@@ -32,7 +33,7 @@ t_node	*ft_create_node(int value)
 /*
  * Appends a new node to the end of the circular doubly linked list.
  * If the stack is empty (*lst == NULL), the single node points to itself.
- * Otherwise, links the new node between the current 
+ * Otherwise, links the new node between the current
  * last node and the first node.
  */
 void	ft_add_node_back(t_node **lst, t_node *new)
