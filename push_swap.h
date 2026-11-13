@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/13 11:40:52 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/13 13:14:02 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ typedef struct s_data
 	t_op			*ops;
 	int				n_ops;
 	int				capacity;
+	int				mode;
+	int				bench;
+	const char		*strategy;
+	const char		*complexity;
+
 }					t_data;
 
 // Function Prototypes
@@ -97,5 +102,6 @@ void				sort_simple(t_data *data);
 float				compute_disorder(t_node *head, int size);
 int					get_node_pos(t_node *stack, int value);
 int					get_max_val(t_node *stack);
+int					parse_flags(int argc, char **argv, t_data *data);
 
 #endif

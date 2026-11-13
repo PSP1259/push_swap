@@ -6,7 +6,7 @@
 /*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 13:24:24 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/09 15:50:07 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/13 11:47:49 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	init_data(t_data *data)
 	data->size_b = 0;
 	data->capacity = 1024;
 	data->n_ops = 0;
+	data->bench = 0;
 	data->ops = malloc(sizeof(t_op) * data->capacity);
 	if (!data->ops)
 		return (0);

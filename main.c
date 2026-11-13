@@ -6,7 +6,7 @@
 /*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/10 12:02:20 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/13 13:15:37 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,41 +59,18 @@ void	print_stack_rev(char *label, t_node *head)
 }
 
 /*
-** Checks the first argument for strategy flags and sets the start index
-** for the number parsing accordingly.
-*/
-int	parse_mode(int argc, char **argv, int *start_idx)
-{
-	*start_idx = 1;
-	if (argc > 1 && ft_strncmp(argv[1], "--", 2) == 0)
-	{
-		*start_idx = 2;
-		if (ft_strncmp(argv[1], "--simple", 9) == 0)
-			return (MODE_SIMPLE);
-		if (ft_strncmp(argv[1], "--medium", 9) == 0)
-			return (MODE_MEDIUM);
-		if (ft_strncmp(argv[1], "--complex", 10) == 0)
-			return (MODE_COMPLEX);
-		if (ft_strncmp(argv[1], "--adaptive", 11) == 0)
-			return (MODE_ADAPTIVE);
-		*start_idx = 1;
-	}
-	return (MODE_ADAPTIVE);
-}
-
-/*
-** Directs the program to the correct algorithm based on the chosen mode.
+** Directs the program to the correct algorithm based on data->mode.
 ** In ADAPTIVE mode, it routes based on the computed disorder metric.
 */
-void	execute_strategy(t_data *data, int mode, float disorder)
+void	execute_strategy(t_data *data, float disorder)
 {
-	if (mode == MODE_SIMPLE)
+	if (data->mode == MODE_SIMPLE)
 		sort_simple(data);
-	else if (mode == MODE_MEDIUM)
+	else if (data->mode == MODE_MEDIUM)
 		sort_medium(data);
-	else if (mode == MODE_COMPLEX)
+	else if (data->mode == MODE_COMPLEX)
 		sort_complex(data);
-	else if (mode == MODE_ADAPTIVE)
+	else if (data->mode == MODE_ADAPTIVE)
 	{
 		if (disorder < 0.2f)
 			sort_simple(data);
@@ -105,35 +82,46 @@ void	execute_strategy(t_data *data, int mode, float disorder)
 }
 
 /*
-** Main entry point. Initializes data structures, parses CLI arguments
-** including strategy flags, and routes to the correct sorting algorithm.
+** Frees everything, prints "Error" on stderr and returns 1,
+** so every failure path in main is a single line.
+*/
+static int	exit_error(t_data *data)
+{
+	free_all(data);
+	ft_putstr_fd("Error\n", 2);
+	return (1);
+}
+
+/*
+** Main entry point. Initializes data, parses flags and numbers,
+** and routes to the correct sorting algorithm.
 */
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	int		mode;
-	int		start_idx;
-	float	disorder;
+	int		start;
 
 	if (argc < 2)
 		return (0);
-	mode = parse_mode(argc, argv, &start_idx);
-	if  (start_idx >= argc)
-		return (0);
-	if (!init_data(&data) || !parse_args(argc, argv, start_idx, &data))
+	if (!init_data(&data))
+		return (exit_error(&data));
+	start = parse_flags(argc, argv, &data);
+	if (start < 0)
+		return (exit_error(&data));
+	if (start >= argc)
 	{
 		free_all(&data);
-		ft_putstr_fd("Error\n", 2);
-		return (1);
+		return (0);
 	}
-	assign_ranks(&data);
+	if (!parse_args(argc, argv, start, &data))
+		return (exit_error(&data));
 	if (!is_sorted(data.stack_a))
 	{
-		disorder = compute_disorder(data.stack_a, data.size_a);
-		execute_strategy(&data, mode, disorder);
+		if (!assign_ranks(&data))
+			return (exit_error(&data));
+		execute_strategy(&data, compute_disorder(data.stack_a, data.size_a));
 		print_ops(&data);
 	}
-	
 	free_all(&data);
 	return (0);
 }
