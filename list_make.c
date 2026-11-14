@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_make.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:19:31 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/13 11:28:43 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/13 16:27:08 by vboxuser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,6 @@ void	ft_add_node_back(t_node **lst, t_node *new)
 	new->next = *lst;
 	node->next = new;
 	(*lst)->prev = new;
-}
-
-/*
- * TEST ONLY: Prints all values in the circular list from top to bottom.
- * (Must be removed or replaced before final submission due to printf).
- */
-void	print_list(t_node *head)
-{
-	t_node	*current;
-
-	if (!head)
-		return ;
-	current = head;
-	while (current)
-	{
-		printf("%d", current->value);
-		printf("\n");
-		current = current->next;
-		if (current == head)
-			break ;
-	}
 }
 
 /*

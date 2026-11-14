@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rank.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 11:30:02 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/13 11:30:37 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/13 16:48:34 by vboxuser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 *	Walks exactly 'size' nodes, because the list is circular
 *	and has no NULL at the end.
 */
+
 int	count_smaller(t_node *stack, int value, int size)
 {
-	int		i;
-	int		counter;
+	int	i;
+	int	counter;
 
 	counter = 0;
 	i = 0;
@@ -43,11 +44,12 @@ int	count_smaller(t_node *stack, int value, int size)
 *	original values before any node is overwritten.
 *	Returns 1 on success, 0 if malloc fails.
 */
+
 int	assign_ranks(t_data *data)
 {
-	int	*ranks;
+	int		*ranks;
 	t_node	*current;
-	int i;
+	int		i;
 
 	i = 0;
 	current = data->stack_a;
@@ -69,5 +71,5 @@ int	assign_ranks(t_data *data)
 		i++;
 	}
 	free(ranks);
-	return(1);
+	return (1);
 }

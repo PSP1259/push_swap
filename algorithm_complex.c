@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_complex.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 10:45:01 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/10 11:42:39 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/13 16:44:00 by vboxuser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	get_max_bits(int n)
 {
-	int max;
-	int bits;
+	int	max;
+	int	bits;
 
 	max = n - 1;
 	bits = 0;
@@ -26,10 +26,11 @@ int	get_max_bits(int n)
 
 void	sort_complex(t_data *data)
 {
-	int n;
-	int max_bits;
-	int bit;
-	int i;
+	int	n;
+	int	max_bits;
+	int	bit;
+	int	i;
+
 	if (!data || data->size_a < 2)
 		return ;
 	n = data->size_a;

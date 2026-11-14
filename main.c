@@ -3,88 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/03 18:25:18 by pspuhler          #+#    #+#             */
-/*   Updated: 2026/11/13 13:15:37 by juan-jos         ###   ########.fr       */
+/*   Created: 2026/10/03 18:25:18 by juan-jos          #+#    #+#             */
+/*   Updated: 2026/11/13 16:27:46 by vboxuser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(char *label, t_node *head)
+/*
+** Runs one sorting algorithm and saves its name and complexity class
+** so --bench can display them.
+*/
+
+static void	run_strategy(t_data *data, int mode)
 {
-	t_node	*current;
-
-	printf("%s: ", label);
-	if (!head)
+	if (mode == MODE_SIMPLE)
 	{
-		printf("(empty)\n");
-		return ;
+		data->strategy = "Simple (selection sort)";
+		data->complexity = "O(n^2)";
+		sort_simple(data);
 	}
-	current = head;
-	while (1)
+	else if (mode == MODE_MEDIUM)
 	{
-		printf("%d", current->value);
-		current = current->next;
-		if (current == head)
-			break ;
-		printf(" ");
+		data->strategy = "Medium (chunk sort)";
+		data->complexity = "O(n*sqrt(n))";
+		sort_medium(data);
 	}
-	printf("\n");
-}
-
-void	print_stack_rev(char *label, t_node *head)
-{
-	t_node	*start;
-	t_node	*current;
-
-	printf("%s rev: ", label);
-	if (!head)
+	else
 	{
-		printf("(empty)\n");
-		return ;
+		data->strategy = "Complex (radix sort)";
+		data->complexity = "O(n*log(n))";
+		sort_complex(data);
 	}
-	start = head->prev;
-	current = start;
-	while (1)
-	{
-		printf("%d", current->value);
-		current = current->prev;
-		if (current == start)
-			break ;
-		printf(" ");
-	}
-	printf("\n");
 }
 
 /*
 ** Directs the program to the correct algorithm based on data->mode.
 ** In ADAPTIVE mode, it routes based on the computed disorder metric.
 */
+
 void	execute_strategy(t_data *data, float disorder)
 {
-	if (data->mode == MODE_SIMPLE)
-		sort_simple(data);
-	else if (data->mode == MODE_MEDIUM)
-		sort_medium(data);
-	else if (data->mode == MODE_COMPLEX)
-		sort_complex(data);
-	else if (data->mode == MODE_ADAPTIVE)
-	{
-		if (disorder < 0.2f)
-			sort_simple(data);
-		else if (disorder < 0.5f)
-			sort_medium(data);
-		else
-			sort_complex(data);
-	}
+	if (data->mode != MODE_ADAPTIVE)
+		run_strategy(data, data->mode);
+	else if (disorder < 0.2f)
+		run_strategy(data, MODE_SIMPLE);
+	else if (disorder < 0.5f)
+		run_strategy(data, MODE_MEDIUM);
+	else
+		run_strategy(data, MODE_COMPLEX);
 }
 
 /*
 ** Frees everything, prints "Error" on stderr and returns 1,
 ** so every failure path in main is a single line.
 */
+
 static int	exit_error(t_data *data)
 {
 	free_all(data);
@@ -94,34 +70,33 @@ static int	exit_error(t_data *data)
 
 /*
 ** Main entry point. Initializes data, parses flags and numbers,
-** and routes to the correct sorting algorithm.
+** measures the disorder before any move, and routes to the correct
+** sorting algorithm. With --bench, prints the metrics on stderr.
 */
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
 	int		start;
+	float	disorder;
 
 	if (argc < 2)
 		return (0);
 	if (!init_data(&data))
 		return (exit_error(&data));
 	start = parse_flags(argc, argv, &data);
-	if (start < 0)
+	if (start < 0 || !parse_args(argc, argv, start, &data))
 		return (exit_error(&data));
-	if (start >= argc)
-	{
-		free_all(&data);
-		return (0);
-	}
-	if (!parse_args(argc, argv, start, &data))
-		return (exit_error(&data));
+	disorder = compute_disorder(data.stack_a, data.size_a);
 	if (!is_sorted(data.stack_a))
 	{
 		if (!assign_ranks(&data))
 			return (exit_error(&data));
-		execute_strategy(&data, compute_disorder(data.stack_a, data.size_a));
+		execute_strategy(&data, disorder);
 		print_ops(&data);
 	}
+	if (data.bench && data.size_a > 0)
+		print_bench(&data, disorder);
 	free_all(&data);
 	return (0);
 }

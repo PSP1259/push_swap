@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 16:14:22 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/13 11:46:35 by juan-jos         ###   ########.fr       */
+/*   Updated: 2026/11/13 16:51:18 by vboxuser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static int	is_flag(const char *arg, const char *name)
 
 int	parse_flags(int argc, char **argv, t_data *data)
 {
-	int i;
+	int	i;
 
 	if (!data)
 		return (-1);
