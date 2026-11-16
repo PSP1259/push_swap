@@ -6,7 +6,7 @@
 #    By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/01 16:28:57 by juan-jos          #+#    #+#              #
-#    Updated: 2026/11/16 16:03:43 by juan-jos         ###   ########.fr        #
+#    Updated: 2026/11/16 16:14:32 by juan-jos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ $(LIBFT):
 $(BONUS_OBJS): checker_bonus.h
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 	make -C $(LIBFT_DIR) clean
 
 fclean: clean
