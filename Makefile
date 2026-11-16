@@ -6,7 +6,7 @@
 #    By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/01 16:28:57 by juan-jos          #+#    #+#              #
-#    Updated: 2026/11/16 16:14:32 by juan-jos         ###   ########.fr        #
+#    Updated: 2026/11/16 16:58:12 by juan-jos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SHARED_SRCS =	list_make.c \
 				parse.c
 
 BONUS_SRCS =	checker_bonus.c \
-				checker_read_bonus.c \
+				checker_read_bonus.c
 
 SHARED_OBJS = $(SHARED_SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
@@ -77,9 +77,9 @@ clean:
 	make -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
