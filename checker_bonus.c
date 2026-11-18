@@ -51,6 +51,7 @@ static void	run_stored_ops(t_data *data)
 		i++;
 	}
 }
+
 static int	exit_error(t_data *data)
 {
 	free_all(data);
