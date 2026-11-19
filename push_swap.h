@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/18 17:03:06 by vboxuser         ###   ########.fr       */
+/*   Updated: 2026/11/19 13:11:19 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 # include <limits.h>
-# define MODE_ADAPTIVE 0
-# define MODE_SIMPLE 1
-# define MODE_MEDIUM 2
-# define MODE_COMPLEX 3
+# define MODE_NONE 0
+# define MODE_ADAPTIVE 1
+# define MODE_SIMPLE 2
+# define MODE_MEDIUM 3
+# define MODE_COMPLEX 4
 
 typedef struct s_node
 {
@@ -103,5 +104,7 @@ int		get_node_pos(t_node *stack, int value);
 int		get_max_val(t_node *stack);
 int		parse_flags(int argc, char **argv, t_data *data);
 void	print_bench(t_data *data, float disorder);
+void	move_min_to_top(t_data *data);
+void	sort_small(t_data *data);
 
 #endif

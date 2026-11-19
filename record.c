@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   record.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 13:24:24 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/13 16:50:53 by vboxuser         ###   ########.fr       */
+/*   Updated: 2026/11/19 13:17:05 by pspuhler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	init_data(t_data *data)
 	data->capacity = 1024;
 	data->n_ops = 0;
 	data->bench = 0;
-	data->mode = MODE_ADAPTIVE;
+	data->mode = MODE_NONE;
 	data->strategy = "None (already sorted)";
 	data->complexity = "O(1)";
 	data->ops = malloc(sizeof(t_op) * data->capacity);
