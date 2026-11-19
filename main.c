@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-jos <juan-jos@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 18:25:18 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/13 16:27:46 by vboxuser         ###   ########.fr       */
+/*   Updated: 2026/11/19 14:15:27 by juan-jos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,25 @@ static void	run_strategy(t_data *data, int mode)
 	{
 		data->strategy = "Simple (selection sort)";
 		data->complexity = "O(n^2)";
-		sort_simple(data);
 	}
 	else if (mode == MODE_MEDIUM)
 	{
 		data->strategy = "Medium (chunk sort)";
-		data->complexity = "O(n*sqrt(n))";
-		sort_medium(data);
+		data->complexity = "O(n√n)";
 	}
 	else
 	{
 		data->strategy = "Complex (radix sort)";
 		data->complexity = "O(n*log(n))";
-		sort_complex(data);
 	}
+	if (data->size_a <= 5)
+		sort_small(data);
+	else if (mode == MODE_SIMPLE)
+		sort_simple(data);
+	else if (mode == MODE_MEDIUM)
+		sort_medium(data);
+	else
+		sort_complex(data);
 }
 
 /*
@@ -87,6 +92,8 @@ int	main(int argc, char **argv)
 	start = parse_flags(argc, argv, &data);
 	if (start < 0 || !parse_args(argc, argv, start, &data))
 		return (exit_error(&data));
+	if (data.mode == MODE_NONE)
+		data.mode = MODE_ADAPTIVE;
 	disorder = compute_disorder(data.stack_a, data.size_a);
 	if (!is_sorted(data.stack_a))
 	{

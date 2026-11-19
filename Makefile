@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+         #
+#    By: juan-jos <juan-jos@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/01 16:28:57 by juan-jos          #+#    #+#              #
-#    Updated: 2026/11/16 16:58:12 by juan-jos         ###   ########.fr        #
+#    Updated: 2026/11/19 14:12:56 by juan-jos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRCS =	list_make.c \
 		algorithm_complex.c \
 		compute_disorder.c \
 		rank.c \
-		bench.c
+		bench.c \
+		sort_small.c
 
 OBJS = $(SRCS:.c=.o)
 
