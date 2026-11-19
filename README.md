@@ -214,3 +214,11 @@ Implemented in `execute_strategy()` (`main.c`), the adaptive strategy inspects `
 5. **Pull Request:** Open PR on GitHub $\rightarrow$ Compare & pull request $\rightarrow$ assign partner as Reviewer
 6. **Peer Review:** Reviewer inspects code, tests Norminette & Valgrind, and approves
 7. **Branch Cleanup:** Delete merged remote branch and clean local branch
+
+## Contribution
+
+* **juan-jos**: Core architecture (circular doubly linked list, stack operations, dynamic operation recording, rank mapping), argument parsing, Complex strategy (LSD Radix Sort), benchmark mode (`--bench`), and bonus `checker`.
+* **pspuhler**: Disorder metric (`compute_disorder`), Simple strategy (Selection Sort), Medium strategy (Chunk Sort), Adaptive routing, flag validation, small-input sorting, testing, and documentation.
+EOF
+
+
