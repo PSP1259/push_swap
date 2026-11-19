@@ -29,6 +29,7 @@ SRCS =	list_make.c \
 		ops_rev_rotate.c \
 		record.c \
 		parse.c \
+		parse_flags.c \
 		push_swap_utils.c \
 		algorithm_simple.c \
 		algorithm_medium.c \

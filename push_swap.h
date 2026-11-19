@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pspuhler <pspuhler@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: vboxuser <vboxuser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:23:54 by juan-jos          #+#    #+#             */
-/*   Updated: 2026/11/16 14:50:52 by pspuhler         ###   ########.fr       */
+/*   Updated: 2026/11/18 17:03:06 by vboxuser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 # include <limits.h>
-# include <stdio.h>
 # define MODE_ADAPTIVE 0
 # define MODE_SIMPLE 1
 # define MODE_MEDIUM 2

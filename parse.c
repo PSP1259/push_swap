@@ -1,159 +1,143 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: juan-jos <juan-jos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/26 16:14:22 by juan-jos          #+#    #+#             */
+/*   Updated: 2026/11/18 17:00:00 by juan-jos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 /*
-- Turns a string to a integer.
-- Checks if the input is a digit.
+ * Turns a string to a integer.
+ * Checks if the input is a digit.
  */
-int ft_atoi_safe(const char *str, int *out)
+int	ft_atoi_safe(const char *str, int *out)
 {
-    long    result;
-    int     sign;
-    int     i;
+	long	result;
+	int		sign;
+	int		i;
 
-    result = 0;
-    sign = 1;
-    i = 0;
-    if (str[i] == '-')
-        sign = -1;
-    if (str[i] == '-' || str[i] == '+')
-        i++;
-    if (ft_isdigit(str[i]) == 0)
-        return (0);
-    while (str[i] != '\0')
-    {
-        if (ft_isdigit(str[i]) == 0)
-            return (0);
-        result = result * 10 + (str[i] - '0');
-        if (result * sign > INT_MAX || result * sign < INT_MIN)
-            return (0);
-        i++;
-    }
-    *out = result * sign;
-    return (1);
+	result = 0;
+	sign = 1;
+	i = 0;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (ft_isdigit(str[i]) == 0)
+		return (0);
+	while (str[i] != '\0')
+	{
+		if (ft_isdigit(str[i]) == 0)
+			return (0);
+		result = result * 10 + (str[i] - '0');
+		if (result * sign > INT_MAX || result * sign < INT_MIN)
+			return (0);
+		i++;
+	}
+	*out = result * sign;
+	return (1);
 }
 
 /*
-- Compares every node in stack_a with all subsequent nodes to detect
-- duplicate numbers. Returns 1 if a duplicate is found, or 0 if all are unique.
+ * Compares every node in stack_a with all subsequent nodes to detect
+ * duplicate numbers. Returns 1 if a duplicate is found, or 0 if all are unique.
  */
-int duplicate_checker(t_node *head)
+int	duplicate_checker(t_node *head)
 {
-    t_node  *outer;
-    t_node  *inner;
+	t_node	*outer;
+	t_node	*inner;
 
-    if (!head)
-        return (0);
-    outer = head;
-    while (outer->next != head)
-    {
-        inner = outer->next;
-        while (inner != head)
-        {
-            if (inner->value == outer->value)
-                return (1);
-            inner = inner->next;
-        }
-        outer = outer->next;
-    }
-    return (0);
-}
-
-static void free_split(char **split)
-{
-    int i;
-
-    if (!split)
-        return ;
-    i = 0;
-    while (split[i])
-    {
-        free(split[i]);
-        i++;
-    }
-    free(split);
-}
-
-static int process_token(char *token, t_data *data)
-{
-    long    n;
-
-    if (!is_valid_number_format(token))
-        return (0);
-    n = ft_atoi_long(token);
-    if (n < INT_MIN || n > INT_MAX)
-        return (0);
-    if (has_duplicate(data->stack_a, (int)n))
-        return (0);
-    if (!stack_add_back(&(data->stack_a), (int)n))
-        return (0);
-    return (1);
-}
-
-int parse_args(int argc, char **argv, int start, t_data *data)
-{
-    int     i;
-    int     j;
-    char    **split_args;
-
-    i = start;
-    while (i < argc)
-    {
-        if (!argv[i] || argv[i][0] == '\0')
-            return (0);
-        split_args = ft_split(argv[i], ' ');
-        if (!split_args || !split_args[0])
-        {
-            free_split(split_args);
-            return (0);
-        }
-        j = 0;
-        while (split_args[j])
-        {
-            if (!process_token(split_args[j], data))
-            {
-                free_split(split_args);
-                return (0);
-            }
-            j++;
-        }
-        free_split(split_args);
-        i++;
-    }
-    return (1);
+	if (!head)
+		return (0);
+	outer = head;
+	while (outer->next != head)
+	{
+		inner = outer->next;
+		while (inner != head)
+		{
+			if (inner->value == outer->value)
+				return (1);
+			inner = inner->next;
+		}
+		outer = outer->next;
+	}
+	return (0);
 }
 
 /*
-- Returns 1 if 'arg' is exactly equal to the flag 'name', 0 otherwise.
-- Compares one character more than the length of 'name' so the end of
-- the string is included: "--simple123" does not match "--simple".
+ * Frees a NULL-terminated array of strings returned by ft_split.
  */
-static int  is_flag(const char *arg, const char *name)
+static void	free_split(char **split)
 {
-    return (ft_strncmp(arg, name, ft_strlen(name) + 1) == 0);
+	int	i;
+
+	if (!split)
+		return ;
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }
 
-int parse_flags(int argc, char **argv, t_data *data)
+/*
+ * Converts every token of a split argument to an integer and appends it
+ * to stack_a. Returns 1 on success, or 0 on an invalid number or malloc error.
+ */
+static int	add_tokens(char **split, t_data *data)
 {
-    int i;
+	int		j;
+	int		num;
+	t_node	*node;
 
-    if (!data)
-        return (-1);
-    i = 1;
-    while (i < argc && ft_strncmp(argv[i], "--", 2) == 0)
-    {
-        if (is_flag(argv[i], "--simple"))
-            data->mode = MODE_SIMPLE;
-        else if (is_flag(argv[i], "--medium"))
-            data->mode = MODE_MEDIUM;
-        else if (is_flag(argv[i], "--complex"))
-            data->mode = MODE_COMPLEX;
-        else if (is_flag(argv[i], "--adaptive"))
-            data->mode = MODE_ADAPTIVE;
-        else if (is_flag(argv[i], "--bench"))
-            data->bench = 1;
-        else
-            return (-1);
-        i++;
-    }
-    return (i);
+	j = 0;
+	while (split[j])
+	{
+		if (ft_atoi_safe(split[j], &num) == 0)
+			return (0);
+		node = ft_create_node(num);
+		if (!node)
+			return (0);
+		data->size_a++;
+		ft_add_node_back(&data->stack_a, node);
+		j++;
+	}
+	return (1);
+}
+
+/*
+ * Loops through the command-line arguments starting at index 'start'.
+ * Each argument may hold several numbers separated by spaces. Fills stack_a
+ * and checks for duplicates at the end.
+ * Returns 1 if all inputs are valid, or 0 on any error.
+ */
+int	parse_args(int argc, char **argv, int start, t_data *data)
+{
+	int		i;
+	int		ok;
+	char	**split;
+
+	if (!data)
+		return (0);
+	i = start;
+	while (i < argc)
+	{
+		split = ft_split(argv[i], ' ');
+		ok = split && split[0] && add_tokens(split, data);
+		free_split(split);
+		if (!ok)
+			return (0);
+		i++;
+	}
+	if (duplicate_checker(data->stack_a) == 1)
+		return (0);
+	return (1);
 }
